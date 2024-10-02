@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <img alt="DUOC" src="../../../assets/img/Fachada-Palacio-Íñiguez-e1578666996857.jpg" class="fullscreen-image" />
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="../../../assets/img/logo_duoc_white.png" alt="DuocUC Logo" style="width: 150px; height: auto;">
+  </div>
+
+  <div style="display: flex; justify-content: center; margin-top: 20px;">
+    <ion-card style="max-width: 400px; width: 100%; padding: 20px;">
+      <ion-card-header>
+        <h1 style="text-align: center;">Sistema de asistencia Duoc</h1>
+        <ion-card-title style="text-align: center;">Recuperar contraseña</ion-card-title>
+        <p style="text-align: center;">Paso 1: Ingresa tu correo</p>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-input 
+            [(ngModel)]="usuario.correo" 
+            label="Correo" 
+            labelPlacement="floating" 
+            placeholder="Ingresa tu correo">
+          </ion-input>
+        </ion-item>
+
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+          <ion-button shape="round" (click)="Correo()" style="width: 100%;">
+            Recuperar contraseña
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="/login">Iniciar sesión</a>
+  </div>
+</ion-content>

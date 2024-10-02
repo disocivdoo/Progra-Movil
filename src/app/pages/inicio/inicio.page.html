@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-img src="../../../assets/img/logo_duoc_white.png" slot="start" style="width: 150px; margin-left: 20px;">
+    </ion-img>
+
+    <ion-title #titulo class="font-size-18">
+      Sistema de Asistencia DUOC
+    </ion-title>
+    
+  </ion-toolbar>
+  <div>
+    <ion-toolbar
+      style="display: flex; justify-content: start; align-items: center; padding: 0; background-color: transparent;">
+      
+      <ion-button fill="outline" size="small"(click)="navegar('/inicio')" class="tab-button">
+        Inicio
+      </ion-button>
+  
+      <ion-button fill="outline"size="small" (click)="navegar('/miclase')" class="tab-button">
+        Mi Clase
+      </ion-button>
+  
+      <ion-button fill="outline"size="small" (click)="navegar('/misdatos')" class="tab-button">
+        Mis Datos
+      </ion-button>
+  
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <img alt="DUOC" src="../../../assets/img/Fachada-Palacio-Íñiguez-e1578666996857.jpg" class="fullscreen-image" />
+  <div class="center-container">
+    <ion-card style="width: 80%; max-width: 500px; padding: 20px; margin: 20px; text-align: center;">
+      <h1 #bienvenida style="margin-top: 20px;">
+        ¡Bienvenid@!
+      </h1>
+      <h1 #nombre>
+        {{ usuario.nombre }} {{ usuario.apellido }}
+      </h1>
+
+      <h3>
+        Escanea el código QR para registrar tu asistencia
+      </h3>
+
+      <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
+        <ion-icon slot="start" name="qr-code"></ion-icon>
+        Escanear QR
+      </ion-button>
+
+      <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
+        <ion-icon slot="start" name="stop-circle"></ion-icon>
+        Detener escaneo de QR
+      </ion-button>
+
+      <video #video [hidden]="!escaneando" width="100%" style="margin-top: 20px;"></video>
+      <canvas #canvas hidden></canvas>
+
+    </ion-card>
+  </div>
+
+  <video #video style="display: none;"></video>
+  <canvas #canvas style="display: none;"></canvas>
+</ion-content>
+
+<ion-footer
+  style="display: flex; justify-content: center; align-items: center; padding-bottom: 20px; padding-top: 20px;">
+  <ion-button shape="round" class="Cerrar"(click)="navegarSinDatos('/login')">
+    <ion-icon slot="start" name="log-out"></ion-icon>
+    Cerrar Sesión
+  </ion-button>
+
+</ion-footer>

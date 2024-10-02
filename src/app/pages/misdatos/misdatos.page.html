@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-img src="../../../assets/img/logo_duoc_white.png" slot="start" style="width: 150px; margin-left: 20px;">
+    </ion-img>
+    <ion-title #titulo class="font-size-18">
+      Sistema de Asistencia DUOC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div>
+  <ion-toolbar
+    style="display: flex; justify-content: start; align-items: center; padding: 0; background-color: transparent;">
+
+    <ion-button fill="outline" size="small" (click)="navegar('/inicio')" class="tab-button">
+      Inicio
+    </ion-button>
+
+    <ion-button fill="outline" size="small" (click)="navegar('/miclase')" class="tab-button">
+      Mi Clase
+    </ion-button>
+
+    <ion-button fill="outline" size="small" (click)="navegar('/misdatos')" class="tab-button">
+      Mis Datos
+    </ion-button>
+
+  </ion-toolbar>
+</div>
+
+<ion-content  class="ion-padding-horizontal page">
+  <img alt="DUOC" src="../../../assets/img/Fachada-Palacio-Íñiguez-e1578666996857.jpg" class="fullscreen-image" />
+  <ion-toolbar class="ion-padding-top">
+    <h1 class="ion-text-center" style="font-size: 24px; font-weight: bold;">
+      ¡Bienvenido(a) {{ usuario.nombre }} {{ usuario.apellido }}!
+    </h1>
+  </ion-toolbar>
+
+
+  <ion-item>
+    <ion-input [(ngModel)]="usuario.cuenta" label="Cuenta" labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="usuario.nombre" label="Nombre" labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="usuario.apellido" label="Apellido" labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="usuario.preguntaSecreta" label="Pregunta Secreta" labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="usuario.respuestaSecreta" label="Respuesta Secreta" labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" class="font-size-16">Educación</ion-label>
+    <ion-select placeholder="Seleccione nivel" [(ngModel)]="usuario.nivelEducacional!.id">
+      <ion-select-option *ngFor="let nivelEducacional of listaNivelesEducacionales" [value]="nivelEducacional.id">
+        {{nivelEducacional.nombre}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <table style="width: 100%;">
+      <tr>
+        <td class="font-size-12">Nacimiento</td>
+        <td style="text-align: right;">
+          <input matInput [matDatepicker]="fechaNacimiento" [(ngModel)]="usuario.fechaNacimiento"
+            placeholder="dd/mm/yyyy" class="date-width">
+        </td>
+        <td class="cell-width-0">
+          <mat-datepicker-toggle matSuffix [for]="fechaNacimiento"></mat-datepicker-toggle>
+          <mat-datepicker #fechaNacimiento></mat-datepicker>
+        </td>
+      </tr>
+    </table>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="usuario.password" label="Contraseña" labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-button shape="round" class="Cerrar" expand="block" type="submit" (click)="actualizarDatos()"
+    style="margin-top: 20px;">Actualizar Datos</ion-button>
+</ion-content>
+
+<ion-footer
+  style="display: flex; justify-content: center; align-items: center; padding-bottom: 20px; padding-top: 20px;">
+  <ion-button shape="round" class="Cerrar" (click)="navegarSinDatos('/login')">
+    <ion-icon slot="start" name="log-out"></ion-icon>
+    Cerrar Sesión
+  </ion-button>
+
+</ion-footer>
